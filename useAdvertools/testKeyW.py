@@ -81,11 +81,12 @@ googtwfb.groupby('robotstxt_url').head()
 
 
 
+adv.sitemap_to_df()
 
 
 
-
-
+vegetable_emoji = adv.emoji_search('vegetable')
+vegetable_emoji.head()
 
 
 
