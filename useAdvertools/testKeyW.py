@@ -42,20 +42,41 @@ adv.ad_from_string(desc_text, [125, 25, 30])  # Facebook feed ads
 # adv.ad_from_string()
 
 # ********** SEO(Search Engine Optimization) ****************
+'''
 
-url_list = ['https://smartmgr.com/',
-            'https://www.soft-titan.com',
-            'https://pypil.com/']
+get_robots = adv.robotstxt_test('https://www.salesforce.com/robots.txt',
+                                user_agents=['*'],
+                urls=['/']) 
+
+print(get_robots)
+get_robots = adv.robotstxt_to_df('https://www.salesforce.com/robots.txt')
+print(get_robots)
+
+# url_list = ['https://smartmgr.com/',
+#             'https://www.soft-titan.com',
+#             'https://pypil.com/']
 
 
-insights = adv.crawl(url_list,
-          output_file='example_crawl_1.jl',
-          follow_links=False)
+# insights = adv.crawl(url_list,
+#           output_file='example_crawl_1.jl',
+#           follow_links=False)
 
-print(insights)
+# print(insights)
 
 
+'''
 
+robots_urls = ['https://www.google.com/robots.txt',
+               'https://twitter.com/robots.txt',
+               'https://facebook.com/robots.txt']
+
+googtwfb = adv.robotstxt_to_df(robots_urls)
+
+# How many lines does each robots file have?
+googtwfb.groupby('robotstxt_url')['directive'].count()
+
+# Display the first five rows of each of the robots files:
+googtwfb.groupby('robotstxt_url').head()
 
 
 
